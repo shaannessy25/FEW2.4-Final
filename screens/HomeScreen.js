@@ -8,17 +8,17 @@ export default function Home() {
         return {
             name: item.band_name,
             origin: item.origin,
-            fans: item.fans,
+            fans: item.fans * 1000,
             formed: item.formed,
         }
     })
     const Item = ({ name, origin, fans, formed }) => (
-        <View >
-          <Text>{name}</Text>
-          <Text>{origin}</Text>
-          <Text>{fans}</Text>
-          <Text>{formed}</Text>
-        </View>
+        <SafeAreaView style={styles.container}>
+          <Text style={styles.labels}>{name}</Text>
+          <Text style={styles.labels}>{formed}</Text>
+          <Text style={styles.details}>{origin}</Text>
+          <Text style={styles.details}>{fans}</Text>
+        </SafeAreaView>
       );
     
       const renderItem = ({ item }) => (
@@ -36,7 +36,7 @@ export default function Home() {
         </TouchableHighlight>
       );
     return(
-        <SafeAreaView>
+        <SafeAreaView >
             <FlatList
                 data={data}
                 renderItem={renderItem}
@@ -51,11 +51,22 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: "column",
-      alignItems: "center",
-      width: "100%",
+      backgroundColor: '#000',
+      flexDirection: 'column',
+      borderBottomColor: 'white',
+      borderBottomWidth: 2
     },
     listContainer: {
       width: "100%",
     },
+    labels: {
+      color: 'white',
+      fontSize: 18,
+    },
+    details: {
+      color: 'white',
+      textAlign: 'right',
+      fontSize: 18,
+
+    }
   });
