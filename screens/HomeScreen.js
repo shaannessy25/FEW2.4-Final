@@ -8,14 +8,16 @@ export default function Home() {
         return {
             name: item.band_name,
             origin: item.origin,
-            // fans: item.fans,
-            // formed: item.formed
+            fans: item.fans,
+            formed: item.formed,
         }
     })
-    const Item = ({ name, origin }) => (
+    const Item = ({ name, origin, fans, formed }) => (
         <View >
           <Text>{name}</Text>
           <Text>{origin}</Text>
+          <Text>{fans}</Text>
+          <Text>{formed}</Text>
         </View>
       );
     
@@ -25,7 +27,12 @@ export default function Home() {
           underlayColor="#DDDDD"
           onPress={() => alert('This is working')}
         >
-        <Item name={item.name} />
+        <Item 
+            name={item.name} 
+            origin={item.origin} 
+            fans={item.fans}
+            formed={item.formed}
+        />
         </TouchableHighlight>
       );
     return(
